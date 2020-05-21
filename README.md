@@ -1,4 +1,3 @@
-# frontend
 
 ## Project setup
 ```
@@ -15,10 +14,7 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
+### start the app with the server
 ```
-npm run lint
+node server.js
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
