@@ -7,7 +7,7 @@ const path = require('path');
 
 const mongolink = process.env.MONGODB_URI || 'mongodb://localhost:27017/testdb';
 
-mongoose.connect(mongolink).then(
+mongoose.connect("mongodb://katerinushka2603:Pillow17031997@ds151247.mlab.com:51247/diary-app-db").then(
     () => { console.log('Database connection is successful') },
     err => { console.log('Error when connecting to the database' + err) }
 );
