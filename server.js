@@ -5,7 +5,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 
-mongoose.connect("mongodb://localhost:27017/testdb").then(
+const mongolink = process.env.MONGODB_URI || 'mongodb://localhost:27017/testdb';
+
+mongoose.connect(mongolink).then(
     () => { console.log('Database connection is successful') },
     err => { console.log('Error when connecting to the database' + err) }
 );
