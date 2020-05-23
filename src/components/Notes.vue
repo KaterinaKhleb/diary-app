@@ -421,9 +421,9 @@ img:hover{
   opacity: 0;
 }
 .tips{
-  position: fixed;
-  bottom:5em;
-  right:6em;
+  position: absolute;
+  bottom:0em;
+  right:1em;
   font-size: 10px;
   display: grid;
   text-align: left
