@@ -170,7 +170,7 @@
               getDate: function(date) {
                     let datevar = new Date(date);
                     let day = datevar.getUTCDate();
-                    let month = datevar.getUTCMonth();
+                    let month = datevar.getUTCMonth()+1;
                     return `${day}.${month}`
             },
 
