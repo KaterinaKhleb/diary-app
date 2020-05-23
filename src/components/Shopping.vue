@@ -12,9 +12,9 @@
 
   <div class="main-shopping">
         <div class="shop-half first-half" >
-            <div class="one-list" v-for="list in allShops" :key="list._id" >
+            <div  class="one-list" v-for="list in allShops" :key="list._id" >
               
-                <ul v-bind:class="getList(list)" class="list" >
+                <ul v-bind:class="getList(list)"  class="list"  >
                      <div  v-on:click.prevent="selected(list)" class="list-title">
 
                         <img  class="icon icon-small" v-if="list.pinned===false" v-on:click="pinList(list)"  src="../assets/pin.png">
@@ -24,7 +24,7 @@
 
                           
                       </div>
-                    <li class="one-item" v-for="item in list.items" :key="item._id" >
+                    <li class="one-item" v-for="item in list.items" :key="item._id"  >
 
                         <div  class="item-holder" >
                         
@@ -36,7 +36,7 @@
                             </div>
                         </div>  
                      </li>
-    
+                  <img v-if="list.items.length > 4" class="scroll" src="../assets/scroll.png">
                 </ul>
             </div>
         </div>
@@ -201,9 +201,11 @@
             getList: function(list) {
               return {
                 "chosen": list.name==this.selectedList.name,
-                "not-chosen": list.name==!this.selectedList.name
+                "not-chosen": list.name==!this.selectedList.name,
+
               }
-            }
+            },
+       
              }
     }
 </script>
@@ -310,7 +312,7 @@ h2{
   width: 85%;
   max-height: 95%;
   border: 1px solid #dedede;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: relative;
   -moz-transition:-moz-transform .15s linear;
   -o-transition:-o-transform .15s linear;
@@ -582,6 +584,13 @@ animation-delay: 9.5s;
 
 }
 
+.scroll {
+  position: sticky;
+  bottom: 5px;
+  float:right;
+  width: 30px;
+  height:auto
+}
 
 /* Tablet horiz to desktop
 ===============================*/

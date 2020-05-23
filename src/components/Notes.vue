@@ -369,7 +369,7 @@ text-decoration:none;
 .note button {
   background: none;
   padding: 5px;
-  width:80% !important;
+  width:20% !important;
   margin: auto;
   font-size: 11px;
   position: absolute;

@@ -59,7 +59,7 @@
                             </div>
                         </div>  
                      </li>
-    
+                  <img v-if="list.items.length > 4" class="scroll" src="../assets/scroll.png">
                 </ul>
             </div>
             </div>
@@ -76,12 +76,9 @@
 
             <div v-for="note in pinnedNotes" :key="note._id">
               <div  v-bind:class="note.color" class="note">
-                <button v-if="note.pinned===false" v-on:click="pinNote(note)"  > 
-              
-                </button>
-                 <button v-if="note.pinned===true"  v-on:click="pinNote(note)" > 
-                  <img src="../assets/unpin.png">
-                </button>
+   
+                  <img class="unpin-note" v-if="note.pinned===true"  v-on:click="pinNote(note)"  src="../assets/unpin.png">
+        
                 <h2>
                   Note #{{allNotes.indexOf(note)+1}}
                 </h2>
@@ -109,7 +106,7 @@ import {mapGetters, mapActions} from 'vuex';
 import router from '../router'
 
 
-// import $ from 'jquery'
+import $ from 'jquery'
 
     export default {
         name: 'Home',
@@ -229,9 +226,9 @@ import router from '../router'
         
   
         mounted () {
-            //     $(document).ready(function(){
-            //     $('.note').draggable();
-            // });
+                $(document).ready(function(){
+                $('.note').draggable();
+            });
           this.fetchTodos()
           this.fetchShops()
           this.fetchNotes()
@@ -266,8 +263,6 @@ import router from '../router'
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     border-collapse: collapse;
-    /* height:80%; */
-    /* margin-bottom:3%; */
     z-index: 12;
     position: relative;
 }
@@ -615,7 +610,8 @@ text-decoration:none;
   -moz-transition:-moz-transform .15s linear;
   -o-transition:-o-transform .15s linear;
   -webkit-transition:-webkit-transform .15s linear;
-  overflow-Y:scroll
+  overflow-Y:scroll;
+  z-index: 50
 }
 
 
@@ -629,18 +625,20 @@ text-decoration:none;
   position:relative;
   z-index:5;
 }
-.note button {
+.unpin-note {
   background: none;
-  padding: 5px;
-  width:80% !important;
-  margin: auto;
-  font-size: 11px;
+  padding: 1px;
   position: absolute;
   border:none;
   top:3%;
   left:3%;
   display:flex;
+  transition: all 0.3s
 }
+.unpin-note:hover{
+transform:rotate(15deg)
+}
+
 .note button span {
   text-align:left
 }
@@ -741,10 +739,6 @@ h2{
 
 
 
-
-
-
-
 .bird {
 	background-image: url('../assets/bird.svg');
 	background-size: auto 100%;
@@ -789,7 +783,13 @@ animation-delay: 11.5s;
 }
 
 
-
+.scroll {
+  position: sticky;
+  bottom: 5px;
+  float:right;
+  width: 30px;
+  height:auto
+}
 
 
 /* Tablet horiz to desktop
