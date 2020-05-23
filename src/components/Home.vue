@@ -106,7 +106,7 @@ import {mapGetters, mapActions} from 'vuex';
 import router from '../router'
 
 
-import $ from 'jquery'
+// import $ from 'jquery'
 
     export default {
         name: 'Home',
@@ -226,9 +226,9 @@ import $ from 'jquery'
         
   
         mounted () {
-                $(document).ready(function(){
-                $('.note').draggable();
-            });
+            //     $(document).ready(function(){
+            //     $('.note').draggable();
+            // });
           this.fetchTodos()
           this.fetchShops()
           this.fetchNotes()
