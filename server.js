@@ -14,6 +14,7 @@ mongoose.connect("mongodb://katerinushka2603:Pillow17031997@ds151247.mlab.com:51
 mongoose.set('useFindAndModify', false);
 
 const app = express();
+
 app.use(serveStatic(path.join(__dirname, 'dist')));
 
 //Middleware
@@ -149,28 +150,15 @@ app.use('/pinShop', (req, res) => {
 });
 
 app.use('/deleteshop', (req, res) => {
-    Shop.findByIdAndRemove({ _id: req.body._id }, (err, shopres) => {
+    Shop.findByIdAndRemove({ _id: req.body._id }, (err, shopres) =>
         if (err) res.json(err);
         else res.json({ 'message': 'SHop list successfully removed', 'shop': shopres });
     });
 });
 
 
+app.use('/*', express.static(path.join(__dirname, 'dist/index.html')));
 
-app.use('/todo', (req, res) => {
-    return res.redirect(req.get('referer'));
-});
-app.use('/home', (req, res) => {
-    return res.send(req.url);
-});
-app.use('/*', (req, res) => {
-    return res.redirect('/')
-});
-
-
-app.use('/', (req, res) => {
-    return res.redirect('/')
-});
 
 
 const port = process.env.PORT || 8080;
