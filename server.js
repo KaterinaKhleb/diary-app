@@ -27,7 +27,7 @@ const Shop = require('./models/Shop');
 
 
 
-app.use('/notes', (req, res) => {
+app.use('/notesdb', (req, res) => {
     Note.find((err, notes) => {
         if (err) {
             console.log(err);
@@ -38,7 +38,7 @@ app.use('/notes', (req, res) => {
     });
 });
 
-app.use('/create', (req, res) => {
+app.use('/createnote', (req, res) => {
     var note = new Note(req.body);
     console.log(note)
     note.save().then(note => {
@@ -50,14 +50,14 @@ app.use('/create', (req, res) => {
 });
 
 
-app.use('/delete', (req, res) => {
+app.use('/deletenote', (req, res) => {
     Note.findByIdAndRemove({ _id: req.body._id }, (err, noteres) => {
         if (err) res.json(err);
         else res.json({ 'message': 'Note successfully removed', 'note': noteres });
     });
 });
 
-app.use('/update', (req, res) => {
+app.use('/updatenote', (req, res) => {
     Note.findByIdAndUpdate({ _id: req.body.data._id }, { pinned: req.body.data.pinned }, (err, noteres) => {
         if (err) res.json(err);
         else res.json({ 'message': 'Note successfully updated', 'note': noteres });
@@ -66,7 +66,7 @@ app.use('/update', (req, res) => {
 });
 
 
-app.use('/todos', (req, res) => {
+app.use('/todosdb', (req, res) => {
     Todo.find((err, todos) => {
         if (err) {
             console.log(err);
@@ -110,7 +110,7 @@ app.use('/pintodo', (req, res) => {
 
 });
 
-app.use('/shop', (req, res) => {
+app.use('/shopdb', (req, res) => {
     Shop.find((err, todos) => {
         if (err) {
             console.log(err);
@@ -156,10 +156,21 @@ app.use('/deleteshop', (req, res) => {
 });
 
 
-app.use('/', (req, res) => {
-    res.send('hello');
+
+app.use('/todo', (req, res) => {
+    return res.redirect(req.get('referer'));
+});
+app.use('/home', (req, res) => {
+    return res.send(req.url);
+});
+app.use('/*', (req, res) => {
+    return res.redirect('/')
 });
 
+
+app.use('/', (req, res) => {
+    return res.redirect('/')
+});
 
 
 const port = process.env.PORT || 8080;

@@ -1,9 +1,9 @@
 <template>
   <div class="main-nav">
-    <a v-bind:class="classAktiv('/home')" class="link" v-on:click="navigate('Home')" > Home</a>
-    <a v-bind:class="classAktiv('/todo')"  class="link" v-on:click="navigate('Todo')" > Todo list</a>
-    <a v-bind:class="classAktiv('/shopping')"  class="link" v-on:click="navigate('Shopping')" > Shopping list</a>
-    <a  v-bind:class="classAktiv('/notes')"  class="link" v-on:click="navigate('Notes')" > Notes</a>
+    <a v-bind:class="classAktiv('/home')" exact class="link" v-on:click="navigate('Home')" > Home</a>
+    <a v-bind:class="classAktiv('/todo')" exact class="link" v-on:click="navigate('Todo')" > Todo list</a>
+    <a v-bind:class="classAktiv('/shopping')" exact class="link" v-on:click="navigate('Shopping')" > Shopping list</a>
+    <a  v-bind:class="classAktiv('/notes')" exact class="link" v-on:click="navigate('Notes')" > Notes</a>
 
   </div>
   
