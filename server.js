@@ -150,7 +150,7 @@ app.use('/pinShop', (req, res) => {
 });
 
 app.use('/deleteshop', (req, res) => {
-    Shop.findByIdAndRemove({ _id: req.body._id }, (err, shopres) =>
+    Shop.findByIdAndRemove({ _id: req.body._id }, (err, shopres) => {
         if (err) res.json(err);
         else res.json({ 'message': 'SHop list successfully removed', 'shop': shopres });
     });
