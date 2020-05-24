@@ -273,9 +273,11 @@ input:focus{
     margin-top:5%
 }
 .main-half:nth-of-type(1){
-    border-right:2px solid black
+    border-right:1px solid black
 }
-
+.main-half:nth-of-type(2){
+    border-left:1px solid black
+}
 button {
   background: none;
   padding: 7px;

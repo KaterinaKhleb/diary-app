@@ -243,10 +243,14 @@
         display: block;
         overflow: auto;
     }
+    .first-half {
+        border-right:1px solid black
+
+    }
     .second-half {
         display: flex;
         flex-direction: column;
-        border-left:2px solid black
+        border-left:1px solid black
     }
     .quarter {
         width: 100%;
