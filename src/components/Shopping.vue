@@ -243,10 +243,7 @@
         display: block;
         overflow: auto;
     }
-    .first-half {
-        border-right:1px solid black
 
-    }
     .second-half {
         display: flex;
         flex-direction: column;
@@ -298,7 +295,8 @@ button:hover{
 }
 .first-half {
     display:grid;
-    margin: 5px auto 0px auto;
+    padding: 5px auto 0px auto;
+    border-right:1px solid black;
     overflow-y:auto;
     grid-template-columns: 2fr  2fr;
     grid-template-rows: auto auto auto auto;
